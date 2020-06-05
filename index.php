@@ -5,6 +5,7 @@
  * Date: 28/05/2020
  * Time: 09:15
  */
+include "includes\sql.php";
 ?>
 <!doctype html>
 <html lang="nl">
@@ -21,6 +22,7 @@
     ?>
 </head>
 <body>
+
     <div id="container">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">

@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: alexander
- * Date: 28/05/2020
- * Time: 09:38
+ * Date: 29/05/2020
+ * Time: 14:21
  */
 ?>
 <!doctype html>
@@ -21,34 +21,6 @@
     ?>
 </head>
 <body>
-<div class="container">
-    <div class="row col-12">
-        <div class="card col-9" >
-            <div class="row no-gutters">
-                <div class="col-3">
-                    <img src="images\huis.jpg" class="card-img" alt="..." width="100" height="172">
-                </div>
-                <div class="col-7">
-                    <div class="card-body">
-                        <h5 class="card-title">Huis voor 4 personen</h5>
-                        <p class="card-text">Dit huis in de ardennen is voorzien van alle luxe die je nodig hebt om een fijne vakantie te hebben. in het huis kun je spullen vinden voor het slapen en om er te koken.</p>
-                    </div>
-                </div>
-                <div class="col-2 d-flex align-items-end "  id="reserveren">
-                    <a cclass="mt-auto p-0" href="detail.php" >details</a>
-                </div>
-            </div>
-        </div>
-        <div class="card col-3" >
-            <div class="row no-gutters">
-                <div class="col-12">
-                    <a cclass="mt-auto p-0" href="reserveringPagina.php" >reserveren</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 
 <?php include "includes\\footer.php"; ?>
