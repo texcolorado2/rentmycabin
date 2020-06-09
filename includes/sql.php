@@ -19,22 +19,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-function select($tableValue,$tableName){
-    $sql = "SELECT $tableValue FROM $tableName";
-}
-
-function insert($tableName, $columName,$values){
-    $sql = "INSER INTO `" . $tableName . "` (" . $columName . ") VALUES (" . $values . ")";
-}
-
-function update(){
-
-}
-
-function delete(){
-
-}
-
 function query($sql){
     global $conn;
     if ($conn->query($sql) === TRUE) {

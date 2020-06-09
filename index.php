@@ -5,6 +5,14 @@
  * Date: 28/05/2020
  * Time: 09:15
  */
+//start sessie
+session_start();
+// check als sesie gezet is, wanneer dit niet is maak het false (word eenmalig uitgevoerd)
+if(!isset($_SESSION['isLoggedIn']))
+{
+    $_SESSION['isLoggedIn'] = false;
+}
+//start database connectie
 include "includes\sql.php";
 ?>
 <!doctype html>
@@ -18,6 +26,7 @@ include "includes\sql.php";
     <link rel="stylesheet" href="css\style.css">
     <title>Rent My Cabin</title>
     <?php
+    //zet de header op de pagina
     include "includes\header.php";
     ?>
 </head>
@@ -32,7 +41,7 @@ include "includes\sql.php";
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="images\huis.jpg" class="img-fluid" class="d-block w-100 " alt="...">
+                    <img src="images\huis1.jpg" class="img-fluid" class="d-block w-100 " alt="...">
                 </div>
                 <div class="carousel-item">
                     <img src="images\huis2.jpg" class="img-fluid" class="d-block w-100 " alt="...">
@@ -51,8 +60,10 @@ include "includes\sql.php";
             </a>
         </div>
     </div>
-
-    <?php include "includes\\footer.php"; ?>
+    <?php
+        //zet de footer op de pagina
+        include "includes\\footer.php";
+    ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>

@@ -93,6 +93,8 @@ body{
 
 #form{
     color: white;
-    margin-left: 700px;
+}
+
+#formContainer{
     margin-top: 10px;
 }

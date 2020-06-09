@@ -17,10 +17,49 @@
     <link rel="stylesheet" href="css\style.css">
     <title>Rent My Cabin</title>
     <?php
+    include "includes\sql.php";
     include "includes\header.php";
     ?>
 </head>
 <body>
+<form action="#" method="post" id="form">
+    <label>voornaam: </label><br>
+    <input type="text" name="firstname" class="form" placeholder="John"> </input><br>
+    <label>achternaam: </label><br>
+    <input type="text" name="lastname" class="form" placeholder="Doe"> </input><br>
+    <label>email address: </label><br>
+    <input type="email" name="email" class="form" placeholder="john.doe@hotmail.com">  </input><br>
+    <label>telefoonnummer: </label><br>
+    <input type="text" name="tel" class="form" placeholder="0614322591">  </input><br>
+    <label>message: </label><br>
+    <input type="text" name="message" class="form" placeholder="php is awesome">  </input><br>
+    <input type="submit" name="submit" value="send"> </input>
+    <input type="reset" value="reset"> </input>
+
+    <?php
+    if (isset($_POST["submit"])) {
+        if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['message']) || isset($_POST['tel'])) {
+            $voornaam = trim($_POST['firstname']);
+            $achternaam = trim($_POST['lastname']);
+            $email = $_POST['email'];
+            $bericht = $_POST['message'];
+            $tel = $_POST['tel'];
+
+            $contactSQL = "INSERT INTO contact(voornaam,achternaam,email,bericht,telefoonnummer) VALUES ('$voornaam','$achternaam','$email','$bericht','$tel')";
+
+            $conn->query($contactSQL);
+
+            $naar = "test@localhost"; // mail waar naar verstuurt wordt
+            $van = $_POST['email']; // mail waar vandaan komt
+            $onderwerp = "Form submission"; //onderwerp
+            $bericht =  $_POST['message']; //bericht
+
+            $headers = "Van:" . $van; //niet zeker
+            mail($naar,$onderwerp,$bericht,$headers);
+        }
+    }
+    ?>
+</form>
 
 
 <?php include "includes\\footer.php"; ?>

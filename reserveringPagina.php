@@ -6,7 +6,11 @@
  * Time: 15:32
  */
     include 'includes\sql.php';
-    //select("*","klant");
+
+    //check als de huisid gezet is
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+    }
 
 ?>
 <!doctype html>
@@ -24,104 +28,176 @@
     ?>
 </head>
 <body>
-    <form action="#" method="post" id="form">
-        <label for="fName">Voornaam:</label><br>
-        <input type="text" id="fName" name="fName" value="John"><br>
+    <div class="container text-align-center" id="formContainer">
+        <form action="#" method="post" id="form">
+            <div class="form-row col-12 ">
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <label for="fName">Voornaam:</label>
+                    <input type="text" class="form-control" id="fName" name="fName" value="John">
 
-        <label for="lName">Achternaam:</label><br>
-        <input type="text" id="lName" name="lName" value="Doe"><br>
+                    <label for="email">Email adres:</label>
+                    <input type="email" class="form-control" id="email" name="email" value="Doe@hotmail.com">
 
-        <label for="email">Email adres:</label><br>
-        <input type="email" id="email" name="email" value="Doe@hotmail.com"><br>
+                    <label for="adres">Adres:</label>
+                    <input type="text" class="form-control" id="adres" name="adres" value="koningsweg 12">
 
-        <label for="phone">Telefoonnummer:</label><br>
-        <input type="tel" id="phone" name="phone" value="06123456789"><br>
+                    <label for="plaats">Plaats:</label>
+                    <input type="text" class="form-control" id="plaats" name="plaats" value="Durbuy">
+                    <div class="form-row">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="man" name="gender">
+                            <label class="custom-control-label" for="man">Man</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="vrouw" name="gender">
+                            <label class="custom-control-label" for="vrouw">Vrouw</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="contant" onclick="javascript:overschrijvenInput();" name="betaalmethode" value="contant">
+                            <label class="custom-control-label" for="contant">Contant</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="overschrijven" onclick="javascript:overschrijvenInput();" name="betaalmethode" value="overschrijven">
+                            <label class="custom-control-label" for="overschrijven">Overschrijven</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div id="ifYes" style="visibility:hidden">
+                            <input type='text' class="form-control" id='bankRekeningNummer' name='bankRekeningNummer'>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="aantalMensen">Aantal mensen: &nbsp;</label>
+                        <select id="aantalMensen" name="aantalMensen">
+                            <?php
+                                $sql = "SELECT * FROM huizen where huisId=$id";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
+                                    // output data of each row
+                                    while ($row = $result->fetch_assoc()) {
+                                        $total = $row['aantalMensen'];
+                                        if ($total == 2){
+                                            echo "<option value=\"aantalMensen\">1</option>";
+                                            echo "<option value=\"aantalMensen\">2</option>";
+                                        }
+                                        if ($total == 4){
+                                            echo "<option value=\"aantalMensen\">1</option>";
+                                            echo "<option value=\"aantalMensen\">2</option>";
+                                            echo "<option value=\"aantalMensen\">3</option>";
+                                            echo "<option value=\"aantalMensen\">4</option>";
+                                        }
+                                        if ($total == 6){
+                                            echo "<option value=\"aantalMensen\">1</option>";
+                                            echo "<option value=\"aantalMensen\">2</option>";
+                                            echo "<option value=\"aantalMensen\">3</option>";
+                                            echo "<option value=\"aantalMensen\">4</option>";
+                                            echo "<option value=\"aantalMensen\">5</option>";
+                                            echo "<option value=\"aantalMensen\">6</option>";
+                                        }
+                                    }
+                                }
+                            ?>
+                        </select>
+                        <input type="submit" class="form-control" name="submit" value="Reserveer">
+                    </div>
 
-        <label for="adres">Adres:</label><br>
-        <input type="text" id="adres" name="adres" value="koningsweg 12"><br>
 
-        <label for="postcode">Postcode:</label><br>
-        <input type="text" id="postcode" name="postcode" value="1234 AB"><br>
+                </div>
+                <div class="col-md-5">
+                    <label for="lName">Achternaam:</label>
+                    <input type="text" class="form-control" id="lName" name="lName" value="Doe">
 
-        <label for="plaats">Plaats:</label><br>
-        <input type="text" id="plaats" name="plaats" value="Durbuy"><br>
+                    <label for="phone">Telefoonnummer:</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" value="0614322591">
 
-        <label for="land">Land:</label><br>
-        <input type="text" id="land" name="land" value="Belgie"><br>
+                    <label for="postcode">Postcode:</label><br>
+                    <input type="text" class="form-control" id="postcode" name="postcode" value="1234 AB">
 
-        <input type="checkbox" id="man" name="man">
-        <label for="man">Man</label>
-        <input type="checkbox" id="vrouw" name="vrouw">
-        <label for="vrouw">Vrouw</label><br>
+                    <label for="land">Land:</label>
+                    <input type="text" class="form-control" id="land" name="land" value="Belgie">
 
-        <input type="checkbox" id="ontbijt" name="ontbijt">
-        <label for="ontbijt">Ontbijt</label><br>
+                    <div class="form-row">
+                        <div class="custom-control custom-checkbox custom-control-inline">
+                            <input type="checkbox" class="custom-control-input" id="ontbijt" name="ontbijt" value="1">
+                            <label class="custom-control-label" for="ontbijt">Ontbijt</label<br>
+                        </div>
+                    </div>
 
-        <input type="checkbox" id="contant" name="contant" value="1">
-        <label for="contant">Contant</label>
-        <input type="checkbox" id="overschrijven" name="overschrijven" value="overschrijven">
-        <label for="overschrijven">Overschrijven</label><br>
-        <input type="text" id="bankRekeningNummer" name="bankRekeningNummer"><br>
+                    <div class="form-row">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="2nachten" name="nachten" value="2nachten">
+                            <label class="custom-control-label" for="2nachten">2 nachten</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="5nachten" name="nachten" value="5nachten">
+                            <label class="custom-control-label" for="5nachten">5 nachten</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="7nachten" name="nachten" value="7nachten">
+                            <label class="custom-control-label" for="7nachten">7 nachten</label>
+                        </div>
+                    </div>
 
-        <br><label for="sDate">Begin datum:</label>
-        <input type="date" id="sDate" name="sDate"><br>
-        <label for="eDate">End datum:</label>
-        <input type="date" id="eDate" name="eDate"><br>
-        <input type="submit" name="submit" value="Reserveer">
-    </form>
+                    <div class="form-row">
+                        <label for="sDate">Begin datum: (voegt automatisch geselecteerd aantal nachten toe)</label>
+                        <input type="date" class="form-control" id="sDate" name="sDate" >
+                        <?php
+                            $sql = "SELECT * FROM huizen where huisId=$id";
+                            $result = $conn->query($sql);
+                            if ($result->num_rows > 0) {
+                                // output data of each row
+                                while ($row = $result->fetch_assoc()) {
+                                    $total = $row['aantalMensen'];
+                                    if($total == 2){
+                                        echo "<label for=\"extraPersoon1\">Naam 1ste huisgenoot:</label>";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon1\" name=\"extraPersoon1\" value=\"extraPersoon1\">";
+                                    }
+                                    if($total == 4){
+                                        echo "<label for=\"extraPersoon1\">Naam 1ste huisgenoot:</label>";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon1\" name=\"extraPersoon1\" value=\"extraPersoon1\">";
+                                        echo "<label for=\"extraPersoon2\">Naam 2de huisgenoot:</label>";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon2\" name=\"extraPersoon2\" value=\"extraPersoon2\">";
+                                        echo "<label for=\"extraPersoon3\">Naam 3de huisgenoot:</label>";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon3\" name=\"extraPersoon3\" value=\"extraPersoon3\">";
+                                    }
+                                    if($total == 6){
+                                        echo "<label for=\"extraPersoon1\">Naam 1ste huisgenoot:</label>";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon1\" name=\"extraPersoon1\" value=\"extraPersoon1\">";
+                                        echo "<label for=\"extraPersoon2\">Naam 2de huisgenoot:</label>";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon2\" name=\"extraPersoon2\" value=\"extraPersoon2\">";
+                                        echo "<label for=\"extraPersoon3\">Naam 3de huisgenoot:</label>";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon3\" name=\"extraPersoon3\" value=\"extraPersoon3\">";
+                                        echo "<label for=\"extraPersoon4\">Naam 4de huisgenoot:</label>";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon4\" name=\"extraPersoon4\" value=\"extraPersoon4\">";
+                                        echo "<label for=\"extraPersoon5\">Naam 5de huisgenoot:</label>";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon5\" name=\"extraPersoon5\" value=\"extraPersoon5\">";
+                                    }
 
-    <script>
-        var bankRekening = document.querySelector('input[value="overschrijven"]');
-        var bankRekeningNummer = document.querySelector('input[id="bankRekeningNummer"]');
-        bankRekeningNummer.style.visibility = 'hidden';
+                                }
+                            }
+                        ?>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
 
-        bankRekening.addEventListener('change', () => {
-            if(bankRekening.checked) {
-                bankRekeningNummer.style.visibility = 'visible';
-                bankRekeningNummer.value = '';
-            } else {
-                bankRekeningNummer.style.visibility = 'hidden';
-            }
-        });
-    </script>
+                <script>
+                    function overschrijvenInput() {
+                        if (document.getElementById('overschrijven').checked) {
+                            document.getElementById('bankRekeningNummer').style.visibility = 'visible';
+                        }
+                        else document.getElementById('bankRekeningNummer').style.visibility = 'hidden';
+                    }
+                </script>
+            </div>
+        </form>
+    </div>
+
     <?php
-    $sqlKlant = "INSERT INTO klant (voornaam,achternaam,email,telefoonnummer,adres,postcode,plaats,land,bankrekeningnummer,contant) VALUES (,)";
-    $sqlReservering = "INSERT INTO reservering (beginDatum,eindDatum,aantalMensen,ontbijt,prijs,klantId,huisId,naamHoofdHuurder,naamExtraPersoon1,naamExtraPersoon2,naamExtraPersoon3,naamExtraPersoon4,naamExtraPersoon5) VALUES (,)";
-    $sqlHuis = "INSERT INTO huizen (aantalMensen,plaats,prijs)";
-    //$conn->query($sql);
-
-
-
-    if(isset($_POST["submit"])){
-        if (isset($_POST["fName"]) && isset($_POST["lName"]) && isset($_POST["email"]) && isset($_POST["phone"]) && isset($_POST["adres"])
-            && isset($_POST["postcode"]) && isset($_POST["plaats"]) && isset($_POST["land"])){
-
-            $fname = $_POST["fName"];
-            $lname = $_POST["lName"];
-            $email = $_POST["email"];
-            $phone = $_POST["phone"];
-            $adres = $_POST["adres"];
-            $postcode = $_POST["postcode"];
-            $plaats = $_POST["plaats"];
-            $land = $_POST["land"];
-            //$man = $_POST["man"];
-            //$vrouw = $_POST["vrouw"];
-            //$ontbijt = $_POST["ontbijt"];
-            //$contant = $_POST["contant"];
-            //$overschrijving = $_POST["overschrijving"];
-            $sDate = $_POST["sDate"];
-            $eDate = $_POST["eDate"];
-            $overschrijving = $_POST["bankRekeningNummer"];
-            $contant = $_POST["contant"];;
-            echo "true";
-
-            $sqlKlant = "INSERT INTO klant (voornaam,achternaam,email,telefoonnumer,adres,poscode,plaats,land,bankrekeningnummer,contant) VALUES 
-            ('$fname','$lname','$email','$phone','$adres','$postcode','$plaats','$land','$overschrijving','$contant')";
-
-            $conn->query($sqlKlant);
-        }
-    }
-
+        include "includes\\reserveringsForm.php";
 
     ?>
 
