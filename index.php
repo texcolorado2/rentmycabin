@@ -59,6 +59,14 @@ include "includes\sql.php";
                 <span class="sr-only">Next</span>
             </a>
         </div>
+        <div class="col-12" id="inleidingText">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum eros non ligula elementum dictum.
+                Mauris sollicitudin dolor vitae sagittis aliquam. Cras dapibus sem vitae magna faucibus lacinia. Suspendisse vehicula
+                efficitur risus sed iaculis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed nec eros ornare felis
+                suscipit vestibulum id ut tellus. Integer quis laoreet massa. Nam laoreet sagittis lacus quis fermentum. Sed congue,
+                ante eget egestas blandit, massa urna porta odio, laoreet vulputate nisl ligula a neque. Duis eu tortor a dui finibus
+                aliquam. Donec in lectus dui. Phasellus commodo elit ac diam aliquet faucibus non non justo.</p>
+        </div>
     </div>
     <?php
         //zet de footer op de pagina

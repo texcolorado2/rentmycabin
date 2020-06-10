@@ -1,11 +1,6 @@
 <?php
-if(isset($_POST['myLogout']))
-{
-    // gebruiker is uitgelogd
-    // vernietig de sessie
-    session_destroy();
-    // herlaad het script
-    unset($_SESSION['isLoggedIn']);
+if(isset($_POST['logout'])) {
+
 }
 ?>
 <div class=".container-fluid" id="header">
@@ -47,7 +42,7 @@ if(isset($_POST['myLogout']))
                             <a class="nav-link" href="adminPanel.php" >Admin panel</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.php" name="myLogout">logout</a>
+                            <a class="nav-link" href="logout.php" name="logout" value="logout">logout</a>
                         </li>
                     </ul>
                     <?php
