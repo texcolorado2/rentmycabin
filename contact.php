@@ -5,6 +5,7 @@
  * Date: 28/05/2020
  * Time: 09:39
  */
+session_start();
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,44 +23,52 @@
     ?>
 </head>
 <body>
-<form action="#" method="post" id="form">
-    <label>voornaam: </label><br>
-    <input type="text" name="firstname" class="form" placeholder="John"> </input><br>
-    <label>achternaam: </label><br>
-    <input type="text" name="lastname" class="form" placeholder="Doe"> </input><br>
-    <label>email address: </label><br>
-    <input type="email" name="email" class="form" placeholder="john.doe@hotmail.com">  </input><br>
-    <label>telefoonnummer: </label><br>
-    <input type="text" name="tel" class="form" placeholder="0614322591">  </input><br>
-    <label>message: </label><br>
-    <input type="text" name="message" class="form" placeholder="php is awesome">  </input><br>
-    <input type="submit" name="submit" value="send"> </input>
-    <input type="reset" value="reset"> </input>
+<div class="container text-align-center" id="formContainer">
+    <form action="#" method="post" id="form">
+        <div class="form-row col-12 ">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+            <label>voornaam: </label><br>
+            <input type="text" class="form-control" name="firstname" class="form" placeholder="John"> </input>
+            <label>achternaam: </label><br>
+            <input type="text" class="form-control" name="lastname" class="form" placeholder="Doe"> </input>
+            <label>email address: </label><br>
+            <input type="email" class="form-control" name="email" class="form" placeholder="john.doe@hotmail.com">  </input>
+            <label>telefoonnummer: </label><br>
+            <input type="text" class="form-control" name="tel" class="form" placeholder="0614322591">  </input>
+            <label>message: </label><br>
+            <input type="text" class="form-control" name="message" class="form" placeholder="php is awesome">  </input><br>
+            <input type="submit" class="form-control" name="submit" value="send"> </input><br>
+            <input type="reset" class="form-control" value="reset"> </input><br>
 
-    <?php
-    if (isset($_POST["submit"])) {
-        if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['message']) || isset($_POST['tel'])) {
-            $voornaam = trim($_POST['firstname']);
-            $achternaam = trim($_POST['lastname']);
-            $email = $_POST['email'];
-            $bericht = $_POST['message'];
-            $tel = $_POST['tel'];
+            <?php
+            if (isset($_POST["submit"])) {
+                if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['message']) || isset($_POST['tel'])) {
+                    $voornaam = trim($_POST['firstname']);
+                    $achternaam = trim($_POST['lastname']);
+                    $email = $_POST['email'];
+                    $bericht = $_POST['message'];
+                    $tel = $_POST['tel'];
 
-            $contactSQL = "INSERT INTO contact(voornaam,achternaam,email,bericht,telefoonnummer) VALUES ('$voornaam','$achternaam','$email','$bericht','$tel')";
+                    $contactSQL = "INSERT INTO contact(voornaam,achternaam,email,bericht,telefoonnummer) VALUES ('$voornaam','$achternaam','$email','$bericht','$tel')";
 
-            $conn->query($contactSQL);
+                    $conn->query($contactSQL);
 
-            $naar = "test@localhost"; // mail waar naar verstuurt wordt
-            $van = $_POST['email']; // mail waar vandaan komt
-            $onderwerp = "Form submission"; //onderwerp
-            $bericht =  $_POST['message']; //bericht
+                    $naar = "test@localhost"; // mail waar naar verstuurt wordt
+                    $van = $_POST['email']; // mail waar vandaan komt
+                    $onderwerp = "Form submission"; //onderwerp
+                    $bericht =  $_POST['message']; //bericht
 
-            $headers = "Van:" . $van; //niet zeker
-            mail($naar,$onderwerp,$bericht,$headers);
-        }
-    }
-    ?>
-</form>
+                    $headers = "Van:" . $van; //niet zeker
+                    mail($naar,$onderwerp,$bericht,$headers);
+                }
+            }
+        ?>
+            </div>
+                <div class="col-md-3"></div>
+        </div>
+    </form>
+</div>
 
 
 <?php include "includes\\footer.php"; ?>

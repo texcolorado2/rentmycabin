@@ -5,6 +5,7 @@
  * Date: 28/05/2020
  * Time: 09:39
  */
+session_start();
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,6 +23,51 @@
 </head>
 <body>
 
+<div class="row">
+    <div class="col-sm-3">
+        <div class="card">
+            <img class="card-img-top" src="images\meer.jpg" alt="Card image cap">
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card">
+            <img class="card-img-top" src="images\berg.jpg" alt="Card image cap">
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card">
+            <img class="card-img-top" src="images\durbuy.jpg" alt="Card image cap">
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card">
+            <img class="card-img-top" src="images\bos.jpg" alt="Card image cap">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3">
+        <div class="card">
+            <img class="card-img-top" src="images\speel.jpg" alt="Card image cap">
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card">
+            <img class="card-img-top" src="images\restaurant.jpg" alt="Card image cap">
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card">
+            <img class="card-img-top" src="images\zwembad.jpg" alt="Card image cap">
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card">
+            <img class="card-img-top" src="images\kasteel.jpg" alt="Card image cap">
+        </div>
+    </div>
+</div>
 
 <?php include "includes\\footer.php"; ?>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

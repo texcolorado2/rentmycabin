@@ -5,6 +5,7 @@
  * Date: 28/05/2020
  * Time: 09:38
  */
+session_start();
 include "includes\sql.php";
 ?>
 <!doctype html>
@@ -34,6 +35,21 @@ include "includes\sql.php";
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
+                if($row['aantalMensen']== 2){
+                    $prijs2Nachten = "€280,-";
+                    $prijs5Nachten = "€580,-";
+                    $prijs7Nachten = "€720,-";
+                }
+                if($row['aantalMensen'] == 4){
+                    $prijs2Nachten = "€480,-";
+                    $prijs5Nachten = "€1080,-";
+                    $prijs7Nachten = "€1350,-";
+                }
+                if($row['aantalMensen'] == 6){
+                    $prijs2Nachten = "€640,-";
+                    $prijs5Nachten = "€1440,-";
+                    $prijs7Nachten = "€1950,-";
+                }
                 echo "<div class=\"card col-9\" >";
                     echo "<div class=\"row no-gutters\">";
                         echo "<div class=\"col-3\">";
@@ -41,21 +57,21 @@ include "includes\sql.php";
                         echo "</div>";
                     echo"<div class=\"col-7\">";
                         echo"<div class=\"card-body\">";
-                            echo "<h5 class=\"card-title\">Huis voor " .$row['aantalMensen']. " personen</h5>";
+                            echo "<h5 class=\"card-title\">Huis voor " .$row['aantalMensen']. " personen. Prijs 2 nachten: ".$prijs2Nachten." Prijs 5 nachten: ".$prijs5Nachten." Prijs 7 nachten: ".$prijs7Nachten."</h5>";
                                 echo "<p class=\"card-text\">Dit huis in de ardennen is voorzien 
                                      van alle luxe die je nodig hebt om een fijne vakantie te hebben. 
                                      in het huis kun je spullen vinden voor het slapen en om er te koken.</p>";
                                 echo"</div>";
                             echo "</div>";
                     echo "<div class=\"col-2 d-flex align-items-end \" id=\"reserveren\">";
-                        echo "<a cclass=\"mt-auto p-0\" href=\"detail.php\" >details</a>";
+                        echo "<a class=\"mt-auto p-1\" href=\"detail.php\" >details</a>";
                     echo "</div>";
                 echo "</div>";
             echo "</div>";
             echo"<div class=\"card col-3\" >";
                     echo"<div class=\"row no-gutters\">";
-                        echo"<div class=\"col-12\">";
-                            echo"<a cclass=\"mt-auto p-0\" href=\"reserveringPagina.php?id=".$row['huisId']."\" >reserveren</a>";
+                        echo"<div class=\"col-12 d-flex align-items-end\" id=\"reserveren\">";
+                            echo"<a class=\"mt-auto p-1\"  href=\"reserveringPagina.php?id=".$row['huisId']."\" >reserveren</a>";
                         echo "</div>";
                     echo "</div>";
                 echo "</div>";

@@ -1,6 +1,7 @@
 body{
  margin: 0 auto;
     background-color: #4f6d77;
+    padding-bottom: 120px;
 }
 
 #container{
@@ -43,38 +44,6 @@ body{
     text-align: center;
 }
 
-#footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #a1bb74;
-    color: white;
-    text-align: center;
-    height: 80px;
-    text-decoration: none;
-}
-
-#col1{
-    margin-top: 15px;
-}
-
-#col1 a{
-    text-decoration: none;
-    color: white;
-}
-
-#col2 p{
-    padding-bottom: 2px;
-    vertical-align: middle;
-    margin-top: 25px;
-}
-
-#col3 a{
-    text-decoration: none;
-    color: white;
-}
-
 .navbar-nav {
     float:none;
     margin:0 auto;
@@ -97,4 +66,41 @@ body{
 
 #formContainer{
     margin-top: 10px;
+}
+
+#footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #a1bb74;
+    color: white;
+    text-align: center;
+    height: 80px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+#col1{
+    margin-top: 15px;
+}
+
+#col1 a{
+    text-decoration: none;
+    color: white;
+}
+
+#col2 p{
+    padding-bottom: 2px;
+    vertical-align: middle;
+    margin-top: 25px;
+}
+
+#col3 a{
+    text-decoration: none;
+    color: white;
+}
+
+#detailImages{
+    margin-top: 15px;
 }

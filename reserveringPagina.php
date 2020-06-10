@@ -5,6 +5,7 @@
  * Date: 29/05/2020
  * Time: 15:32
  */
+session_start();
     include 'includes\sql.php';
 
     //check als de huisid gezet is
@@ -80,22 +81,22 @@
                                     while ($row = $result->fetch_assoc()) {
                                         $total = $row['aantalMensen'];
                                         if ($total == 2){
-                                            echo "<option value=\"aantalMensen\">1</option>";
-                                            echo "<option value=\"aantalMensen\">2</option>";
+                                            echo "<option value=\"1\">1</option>";
+                                            echo "<option value=\"2\">2</option>";
                                         }
                                         if ($total == 4){
-                                            echo "<option value=\"aantalMensen\">1</option>";
-                                            echo "<option value=\"aantalMensen\">2</option>";
-                                            echo "<option value=\"aantalMensen\">3</option>";
-                                            echo "<option value=\"aantalMensen\">4</option>";
+                                            echo "<option value=\"1\">1</option>";
+                                            echo "<option value=\"2\">2</option>";
+                                            echo "<option value=\"3\">3</option>";
+                                            echo "<option value=\"4\">4</option>";
                                         }
                                         if ($total == 6){
-                                            echo "<option value=\"aantalMensen\">1</option>";
-                                            echo "<option value=\"aantalMensen\">2</option>";
-                                            echo "<option value=\"aantalMensen\">3</option>";
-                                            echo "<option value=\"aantalMensen\">4</option>";
-                                            echo "<option value=\"aantalMensen\">5</option>";
-                                            echo "<option value=\"aantalMensen\">6</option>";
+                                            echo "<option value=\"1\">1</option>";
+                                            echo "<option value=\"2\">2</option>";
+                                            echo "<option value=\"3\">3</option>";
+                                            echo "<option value=\"4\">4</option>";
+                                            echo "<option value=\"5\">5</option>";
+                                            echo "<option value=\"6\">6</option>";
                                         }
                                     }
                                 }
@@ -122,7 +123,7 @@
                     <div class="form-row">
                         <div class="custom-control custom-checkbox custom-control-inline">
                             <input type="checkbox" class="custom-control-input" id="ontbijt" name="ontbijt" value="1">
-                            <label class="custom-control-label" for="ontbijt">Ontbijt</label<br>
+                            <label class="custom-control-label" for="ontbijt">Ontbijt Prijs €9,80,- per persoon per dag</label<br>
                         </div>
                     </div>
 
@@ -198,7 +199,7 @@
 
     <?php
         include "includes\\reserveringsForm.php";
-
+        include "includes\\footer.php";
     ?>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

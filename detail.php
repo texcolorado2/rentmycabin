@@ -5,6 +5,7 @@
  * Date: 29/05/2020
  * Time: 14:21
  */
+session_start();
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,6 +22,47 @@
     ?>
 </head>
 <body>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" id="detailImages">
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card">
+                <img class="card-img-top" src="images\meer.jpg" alt="Card image cap">
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card">
+                <img class="card-img-top" src="images\speel.jpg" alt="Card image cap">
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card">
+                <img class="card-img-top" src="images\zwembad.jpg" alt="Card image cap">
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <?php include "includes\\footer.php"; ?>

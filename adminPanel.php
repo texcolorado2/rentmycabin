@@ -5,6 +5,7 @@
  * Date: 28/05/2020
  * Time: 09:39
  */
+session_start();
 ?>
 <!doctype html>
 <html lang="en">
@@ -18,9 +19,42 @@
     <title>Rent My Cabin</title>
     <?php
     include "includes\header.php";
+    include "includes\sql.php";
+
+        $sql = "SELECT * FROM reservering ORDER BY beginDatum";
+        $result = $conn->query($sql);
     ?>
 </head>
 <body>
+
+<table class="table table-striped table-dark data-filter-order-by">
+    <thead>
+    <tr>
+        <th scope="col">reserveringsId</th>
+        <th scope="col">Begin datum</th>
+        <th scope="col">Eind datum</th>
+        <th scope="col">Aantal mensen</th>
+        <th scope="col">Naam hoofdverhuurder</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo"<tr>";
+                echo "<th scope=\"row\">".$row['reserveringsId']."</th>";
+                echo "<td>".$row['beginDatum']."</td>";
+                echo "<td>".$row['eindDatum']."</td>";
+                echo "<td>".$row['aantalMensen']."</td>";
+                echo "<td>".$row['naamHoofdHuurder']."</td>";
+            echo "</tr>";
+        }
+    }
+
+    ?>
+    </tbody>
+</table>
 
 
 <?php include "includes\\footer.php"; ?>

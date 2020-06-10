@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
         header("location: index.php?error=emptyfields1");
         exit();
     } else {
-        $sql = "SELECT * FROM inloggegevens WHERE ggebruikersnaam=?;";
+        $sql = "SELECT * FROM inloggegevens WHERE gebruikersnaam=?;";
         $stmt = $conn->prepare($sql);
         //gives users input to the database
         mysqli_stmt_bind_param($stmt, "s", $user);
@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
 
            // var_dump($_SESSION);
          //   die("I wanna die!");
-            header("Location: index.php");
+            header("Location: adminPanel.php");
             exit();
         } else {
             header("Location: index.php?errorwrongpassword");
@@ -64,24 +64,19 @@ if(isset($_POST['submit'])){
     include "includes\header.php";
     ?>
 
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="form">
-        <label for="gebruikersnaam">Gebruikernaam:</label><br>
-        <input type="text" id="gebruikersnaam" name="gebruikersnaam" value="John"><br>
 
-        <label for="wachtwoord">Wachtwoord:</label><br>
-        <input type="password" id="wachtwoord" name="wachtwoord" value=""><br><br>
-
-        <input type="submit" name="submit" value="Login">
-    </form>
 </head>
 <body>
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="form">
+    <label for="gebruikersnaam">Gebruikernaam:</label><br>
+    <input type="text" id="gebruikersnaam" name="gebruikersnaam" value="John"><br>
 
+    <label for="wachtwoord">Wachtwoord:</label><br>
+    <input type="password" id="wachtwoord" name="wachtwoord" value=""><br><br>
 
+    <input type="submit" name="submit" value="Login">
+</form>
 <?php
-
-
-
-
 include "includes\\footer.php";
 ?>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
