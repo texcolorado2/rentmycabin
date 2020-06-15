@@ -14,9 +14,12 @@ session_start();
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="detail pagina met extra informatie over het geselecteerde huis">
+    <meta name="keywords" content="vakantiehuis,ardennen,durbuy,vakantie">
+    <meta name="author" content="Alexander Deelen">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css\style.css">
-    <title>Rent My Cabin</title>
+    <title>Rent My Cabin | Detail</title>
     <?php
     include "includes\header.php";
     ?>
@@ -26,16 +29,16 @@ session_start();
     <div class="col-sm-6">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <h5 class="card-title">details over binnenkant huis</h5>
+                <p class="card-text">het huis heeft meerdere slaapkamers,woonkamer en keuken</p>
             </div>
         </div>
     </div>
     <div class="col-sm-6">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <h5 class="card-title">details over buitenkant huis</h5>
+                <p class="card-text">er is een barbeque aanwezig. verder is er een grasveld voor de kinderen of de hond</p>
             </div>
         </div>
     </div>

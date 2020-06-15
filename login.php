@@ -8,46 +8,7 @@
 session_start();
 require 'includes/sql.php';
 
-if(isset($_POST['submit'])){
-
-    //die("boooooo");
-    // inputs
-    $user = $_POST['gebruikersnaam'];
-    $pass = $_POST['wachtwoord'];
-    // checks of the input field are empty
-    if (empty($user) || empty($pass)) {
-        header("location: index.php?error=emptyfields1");
-        exit();
-    } else {
-        $sql = "SELECT * FROM inloggegevens WHERE gebruikersnaam=?;";
-        $stmt = $conn->prepare($sql);
-        //gives users input to the database
-        mysqli_stmt_bind_param($stmt, "s", $user);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-
-        //checks if there is a match
-        $row = mysqli_fetch_assoc($result);
-        $passwordcheck = password_verify($pass, $row['wachtwoord']);
-
-        if ($passwordcheck == false) {
-            header("Location: index.php?error=Wronginput");
-            exit();
-        } else if ($passwordcheck == true) {
-            $_SESSION['gebruikersnaam'] = $row['gebruikersnaam'];
-            $_SESSION['medewerkerId'] = $row['medewerkerId'];
-            $_SESSION['isLoggedIn'] = true;
-
-           // var_dump($_SESSION);
-         //   die("I wanna die!");
-            header("Location: adminPanel.php");
-            exit();
-        } else {
-            header("Location: index.php?errorwrongpassword");
-            exit();
-        }
-    }
-}
+include "includes/loginForm.php";
 
 ?>
 <!doctype html>
@@ -57,9 +18,12 @@ if(isset($_POST['submit'])){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="login pagina">
+    <meta name="keywords" content="vakantiehuis,ardennen,durbuy,vakantie">
+    <meta name="author" content="Alexander Deelen">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css\style.css">
-    <title>Rent My Cabin</title>
+    <title>Rent My Cabin | Login</title>
     <?php
     include "includes\header.php";
     ?>
@@ -67,14 +31,32 @@ if(isset($_POST['submit'])){
 
 </head>
 <body>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="form">
-    <label for="gebruikersnaam">Gebruikernaam:</label><br>
-    <input type="text" id="gebruikersnaam" name="gebruikersnaam" value="John"><br>
+<div class="container text-align-center" id="formContainer">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="form">
+        <div class="form-row col-12 ">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <label for="gebruikersnaam">Gebruikernaam:</label><br>
+                <input type="text" id="gebruikersnaam" name="gebruikersnaam" placeholder="John"><br>
 
-    <label for="wachtwoord">Wachtwoord:</label><br>
-    <input type="password" id="wachtwoord" name="wachtwoord" value=""><br><br>
+                <label for="wachtwoord">Wachtwoord:</label><br>
+                <input type="password" id="wachtwoord" name="wachtwoord" placeholder="password"><br><br>
 
-    <input type="submit" name="submit" value="Login">
+                <input type="submit" name="submit" value="Login">
+                <?php
+                if (isset($_GET["error"]) && $_GET["error"] == 'Wronginput') {
+                    echo "<label>Wrong Username or Password</label><br>";
+                }
+                if (isset($_GET["error"]) && $_GET["error"] == 'wrongpassword') {
+                    echo "<label>Wrong Username or Password</label><br>";
+                }
+                if (isset($_GET["error"])&& $_GET["error"] == 'emptyfields1') {
+                    echo "<label>Wrong Username or Password</label><br>";
+                }
+                ?>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
 </form>
 <?php
 include "includes\\footer.php";

@@ -18,9 +18,9 @@
             <p>Copyright Rent My Cabin</p>
         </div>
         <div class="col-sm" id="col3">
-            <a href="www.facebook.com">facebook<br></a>
-            <a href="www.twitter.com">twitter<br></a>
-            <a href="www.instagram.com">instagram<br></a>
+            <a href="http://www.facebook.com"><img src="images\Facebook.png" class="img-fluid" alt="..." width="40" height="1"></a>
+            <a href="http://www.twitter.com"><img src="images\twitter.png" class="img-fluid" alt="..." width="40" height="1"></a>
+            <a href="http://www.instagram.com"><img src="images\instagram.png" class="img-fluid" alt="..." width="40" height="1"></a>
         </div>
     </div>
 </div>

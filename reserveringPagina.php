@@ -21,9 +21,12 @@ session_start();
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="reserverings pagina">
+    <meta name="keywords" content="vakantiehuis,ardennen,durbuy,vakantie">
+    <meta name="author" content="Alexander Deelen">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css\style.css">
-    <title>Rent My Cabin</title>
+    <title>Rent My Cabin | Reserveren</title>
     <?php
     include "includes\header.php";
     ?>
@@ -34,44 +37,44 @@ session_start();
             <div class="form-row col-12 ">
                 <div class="col-md-1"></div>
                 <div class="col-md-5">
-                    <label for="fName">Voornaam:</label>
-                    <input type="text" class="form-control" id="fName" name="fName" value="John">
+                    <label for="fName">*Voornaam:</label>
+                    <input type="text" class="form-control" id="fName" name="fName" placeholder="John" required>
 
-                    <label for="email">Email adres:</label>
-                    <input type="email" class="form-control" id="email" name="email" value="Doe@hotmail.com">
+                    <label for="email">*Email adres:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Doe@hotmail.com" required>
 
-                    <label for="adres">Adres:</label>
-                    <input type="text" class="form-control" id="adres" name="adres" value="koningsweg 12">
+                    <label for="adres">*Adres:</label>
+                    <input type="text" class="form-control" id="adres" name="adres" placeholder="koningsweg 12" required>
 
-                    <label for="plaats">Plaats:</label>
-                    <input type="text" class="form-control" id="plaats" name="plaats" value="Durbuy">
+                    <label for="plaats">*Plaats:</label>
+                    <input type="text" class="form-control" id="plaats" name="plaats" placeholder="Durbuy" required>
                     <div class="form-row">
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="man" name="gender">
-                            <label class="custom-control-label" for="man">Man</label>
+                            <input type="radio" checked class="custom-control-input" id="man" name="gender">
+                            <label class="custom-control-label" for="man">*Man</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="custom-control-input" id="vrouw" name="gender">
-                            <label class="custom-control-label" for="vrouw">Vrouw</label>
+                            <label class="custom-control-label" for="vrouw">*Vrouw</label>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="contant" onclick="javascript:overschrijvenInput();" name="betaalmethode" value="contant">
-                            <label class="custom-control-label" for="contant">Contant</label>
+                            <input type="radio" checked class="custom-control-input" id="contant" onclick="javascript:overschrijvenInput();" name="betaalmethode" value="contant">
+                            <label class="custom-control-label" for="contant">*Contant</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="custom-control-input" id="overschrijven" onclick="javascript:overschrijvenInput();" name="betaalmethode" value="overschrijven">
-                            <label class="custom-control-label" for="overschrijven">Overschrijven</label>
+                            <label class="custom-control-label" for="overschrijven">*Overschrijven</label>
                         </div>
                     </div>
                     <div class="form-row">
                         <div id="ifYes" style="visibility:hidden">
-                            <input type='text' class="form-control" id='bankRekeningNummer' name='bankRekeningNummer'>
+                            <input type='text' class="form-control" id='bankRekeningNummer' name='bankRekeningNummer' placeholder="bankRekeningNummer">
                         </div>
                     </div>
                     <div class="form-row">
-                        <label for="aantalMensen">Aantal mensen: &nbsp;</label>
+                        <label for="aantalMensen">*Aantal mensen: &nbsp;</label>
                         <select id="aantalMensen" name="aantalMensen">
                             <?php
                                 $sql = "SELECT * FROM huizen where huisId=$id";
@@ -102,23 +105,24 @@ session_start();
                                 }
                             ?>
                         </select>
-                        <input type="submit" class="form-control" name="submit" value="Reserveer">
+                        <input type="submit" class="form-control" name="submit" value="Reserveer" style="margin-top: 10px; margin-right: 10px">
+                        <label>Velden met * zijn verplicht</label>
                     </div>
 
 
                 </div>
                 <div class="col-md-5">
-                    <label for="lName">Achternaam:</label>
-                    <input type="text" class="form-control" id="lName" name="lName" value="Doe">
+                    <label for="lName">*Achternaam:</label>
+                    <input type="text" class="form-control" id="lName" name="lName" placeholder="Doe" required>
 
-                    <label for="phone">Telefoonnummer:</label>
-                    <input type="tel" class="form-control" id="phone" name="phone" value="0614322591">
+                    <label for="phone">*Telefoonnummer:</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="0614322591" required>
 
-                    <label for="postcode">Postcode:</label><br>
-                    <input type="text" class="form-control" id="postcode" name="postcode" value="1234 AB">
+                    <label for="postcode">*Postcode:</label><br>
+                    <input type="text" class="form-control" id="postcode" name="postcode" placeholder="1234 AB" required>
 
-                    <label for="land">Land:</label>
-                    <input type="text" class="form-control" id="land" name="land" value="Belgie">
+                    <label for="land">*Land:</label>
+                    <input type="text" class="form-control" id="land" name="land" placeholder="Belgie" required>
 
                     <div class="form-row">
                         <div class="custom-control custom-checkbox custom-control-inline">
@@ -129,22 +133,22 @@ session_start();
 
                     <div class="form-row">
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="2nachten" name="nachten" value="2nachten">
-                            <label class="custom-control-label" for="2nachten">2 nachten</label>
+                            <input type="radio" checked class="custom-control-input" id="2nachten" name="nachten" value="2nachten">
+                            <label class="custom-control-label" for="2nachten">*2 nachten</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="5nachten" name="nachten" value="5nachten">
-                            <label class="custom-control-label" for="5nachten">5 nachten</label>
+                            <input type="radio"  class="custom-control-input" id="5nachten" name="nachten" value="5nachten">
+                            <label class="custom-control-label" for="5nachten">*5 nachten</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="custom-control-input" id="7nachten" name="nachten" value="7nachten">
-                            <label class="custom-control-label" for="7nachten">7 nachten</label>
+                            <label class="custom-control-label" for="7nachten">*7 nachten</label>
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <label for="sDate">Begin datum: (voegt automatisch geselecteerd aantal nachten toe)</label>
-                        <input type="date" class="form-control" id="sDate" name="sDate" >
+                        <label for="sDate">*Begin datum: (voegt automatisch geselecteerd aantal nachten toe)</label>
+                        <input type="date" class="form-control" id="sDate" name="sDate" required>
                         <?php
                             $sql = "SELECT * FROM huizen where huisId=$id";
                             $result = $conn->query($sql);
@@ -154,27 +158,27 @@ session_start();
                                     $total = $row['aantalMensen'];
                                     if($total == 2){
                                         echo "<label for=\"extraPersoon1\">Naam 1ste huisgenoot:</label>";
-                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon1\" name=\"extraPersoon1\" value=\"extraPersoon1\">";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon1\" name=\"extraPersoon1\" placeholder=\"extraPersoon1\">";
                                     }
                                     if($total == 4){
                                         echo "<label for=\"extraPersoon1\">Naam 1ste huisgenoot:</label>";
-                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon1\" name=\"extraPersoon1\" value=\"extraPersoon1\">";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon1\" name=\"extraPersoon1\" placeholder=\"extraPersoon1\">";
                                         echo "<label for=\"extraPersoon2\">Naam 2de huisgenoot:</label>";
-                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon2\" name=\"extraPersoon2\" value=\"extraPersoon2\">";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon2\" name=\"extraPersoon2\" placeholder=\"extraPersoon2\">";
                                         echo "<label for=\"extraPersoon3\">Naam 3de huisgenoot:</label>";
-                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon3\" name=\"extraPersoon3\" value=\"extraPersoon3\">";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon3\" name=\"extraPersoon3\" placeholder=\"extraPersoon3\">";
                                     }
                                     if($total == 6){
                                         echo "<label for=\"extraPersoon1\">Naam 1ste huisgenoot:</label>";
-                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon1\" name=\"extraPersoon1\" value=\"extraPersoon1\">";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon1\" name=\"extraPersoon1\" placeholder=\"extraPersoon1\">";
                                         echo "<label for=\"extraPersoon2\">Naam 2de huisgenoot:</label>";
-                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon2\" name=\"extraPersoon2\" value=\"extraPersoon2\">";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon2\" name=\"extraPersoon2\" placeholder=\"extraPersoon2\">";
                                         echo "<label for=\"extraPersoon3\">Naam 3de huisgenoot:</label>";
-                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon3\" name=\"extraPersoon3\" value=\"extraPersoon3\">";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon3\" name=\"extraPersoon3\" placeholder=\"extraPersoon3\">";
                                         echo "<label for=\"extraPersoon4\">Naam 4de huisgenoot:</label>";
-                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon4\" name=\"extraPersoon4\" value=\"extraPersoon4\">";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon4\" name=\"extraPersoon4\" placeholder=\"extraPersoon4\">";
                                         echo "<label for=\"extraPersoon5\">Naam 5de huisgenoot:</label>";
-                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon5\" name=\"extraPersoon5\" value=\"extraPersoon5\">";
+                                        echo "<input type=\"text\" class=\"form-control\" id=\"extraPersoon5\" name=\"extraPersoon5\" placeholder=\"extraPersoon5\">";
                                     }
 
                                 }
